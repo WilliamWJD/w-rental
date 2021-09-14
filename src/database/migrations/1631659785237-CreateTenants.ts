@@ -10,29 +10,25 @@ export class CreateTenants1631659785237 implements MigrationInterface {
                     {
                         name:"id",
                         type:"uuid",
-                        isPrimary:true
+                        isPrimary:true,
                     },
                     {
                         name:"name",
                         type:"varchar",
-                        isNullable:false
                     },
                     {
                         name:"birth",
                         type:"varchar",
-                        isNullable:false
                     },
                     {
                         name:"rg",
                         type:"varchar",
                         isUnique:true,
-                        isNullable:false
                     },
                     {
                         name:"cpf",
                         type:"varchar",
                         isUnique:true,
-                        isNullable:false
                     },
                     {
                         name:"marital_status",

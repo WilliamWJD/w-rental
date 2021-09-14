@@ -1,11 +1,8 @@
 import { Router } from 'express';
+import { routeTenants } from './routeTenants';
 
 const routes = Router();
 
-routes.get('/',(req,res)=>{
-    return res.json({
-        message:true
-    })
-})
+routes.use('/tenants', routeTenants);
 
 export { routes }

@@ -1,9 +1,9 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, PrimaryColumn } from "typeorm";
 import { v4 as uuidv4 } from 'uuid';
 
 @Entity("tenants")
 class Tenant{
-    @PrimaryGeneratedColumn()
+    @PrimaryColumn()
     id: string;
     @Column()
     name:string;
@@ -26,7 +26,7 @@ class Tenant{
 
     constructor(){
         if(!this.id){
-            this.id === uuidv4();   
+            this.id = uuidv4();   
         }
     }
 }
