@@ -15,7 +15,6 @@ export class houses1632003552794 implements MigrationInterface {
                     {
                         name:"name",
                         type:"varchar",
-                        isNullable:false
                     },
                     {
                         name:"description",

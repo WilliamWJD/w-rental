@@ -13,12 +13,12 @@ export class CreateLocations1632068048937 implements MigrationInterface {
                         isPrimary:true
                     },
                     {
-                        name:"data_start",
+                        name:"date_start",
                         type:"date",
                         isNullable:false
                     },
                     {
-                        name:"data_end",
+                        name:"date_end",
                         type:"date",
                         isNullable:false
                     },

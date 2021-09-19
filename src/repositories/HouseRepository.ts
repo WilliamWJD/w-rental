@@ -4,14 +4,14 @@ import { House } from "../entities/House";
 
 @EntityRepository()
 class HouseRepository{
-    private repository: Repository<House>
+    private repository:Repository<House>
     
     constructor(){
         this.repository = getRepository(House)
     }
 
     async create(data:IHouse):Promise<House>{
-        const house = this.repository.create(data);
+        const house = this.repository.create(data)
         await this.repository.save(house);
         return house;
     }
