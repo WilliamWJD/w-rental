@@ -28,6 +28,12 @@ class Location{
     @Column()
     tenant_id:string;
 
+    @Column()
+    contract_time:number;
+
+    @Column()
+    is_active:boolean;
+
     @CreateDateColumn()
     created_at:Date;
 

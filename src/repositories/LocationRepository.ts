@@ -15,6 +15,15 @@ class LocationRepository{
         await this.repository.save(location);
         return location;
     }
+
+    async checkLocationActiveHouse(house_id:string):Promise<Location | undefined>{
+        const location = await this.repository.findOne({
+            house_id,
+            is_active:true
+        })
+
+        return location || undefined;
+    }
 }
 
 export { LocationRepository }

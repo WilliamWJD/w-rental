@@ -31,6 +31,15 @@ export class CreateLocations1632068048937 implements MigrationInterface {
                         type:"uuid"
                     },
                     {
+                        name:"contract_time",
+                        type:"int"
+                    },
+                    {
+                        name:"is_active",
+                        type:"boolean",
+                        default:true,
+                    },
+                    {
                         name: "created_at",
                         type: "timestamp",
                         default: "now()",
@@ -39,7 +48,7 @@ export class CreateLocations1632068048937 implements MigrationInterface {
                         name: "updated_at",
                         type: "timestamp",
                         default: "now()",
-                    }
+                    },
                 ],
                 foreignKeys:[
                     {
