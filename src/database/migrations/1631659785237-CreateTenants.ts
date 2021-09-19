@@ -49,6 +49,11 @@ export class CreateTenants1631659785237 implements MigrationInterface {
                     {
                         name:"fone2",
                         type:"varchar",
+                    },
+                    {
+                        name:"status",
+                        type:"boolean",
+                        default:true
                     }
                 ]
             })
