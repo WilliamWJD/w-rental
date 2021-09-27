@@ -27,6 +27,7 @@ class CreateReceiptService{
         }
 
         // verifica ultimo numero de recibo e incrementa automaticamente
+        // verifica se o próximo recibo ultrapassa o tempo de contrato estabelecido na locação
         let receipt_number;
 
         const receiptsByLocation = await receiptRepository.findReceiptsByLocationId(data.location_id);
@@ -35,7 +36,10 @@ class CreateReceiptService{
 
         if(receiptsByLocation.length === 0){
             receipt_number = 1
-        }else{
+        }else if(receiptsByLocation.length + 1 > checkLocationActiveHouse.contract_time){
+            throw new Error("Esse contrato está vencido e precisa ser renovado.")
+        }
+        else{
             receipt_number = receiptsByLocation.length + 1;
         }
 
