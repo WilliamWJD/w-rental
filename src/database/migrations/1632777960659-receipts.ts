@@ -33,6 +33,10 @@ export class receipts1632777960659 implements MigrationInterface {
                         type:"numeric"
                     },
                     {
+                        name:"receipt_number",
+                        type:"numeric"
+                    },
+                    {
                         name: "created_at",
                         type: "timestamp",
                         default: "now()",

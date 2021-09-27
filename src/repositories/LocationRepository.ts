@@ -24,6 +24,17 @@ class LocationRepository{
 
         return location || undefined;
     }
+
+    async findById(location_id:string):Promise<Location | undefined>{
+        const location = await this.repository.findOne({
+            where:{
+                id:location_id,
+                is_active:true
+            }
+        })
+
+        return location
+    }
 }
 
 export { LocationRepository }
