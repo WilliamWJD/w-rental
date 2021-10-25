@@ -40,6 +40,10 @@ export class CreateLocations1632068048937 implements MigrationInterface {
                         default:true,
                     },
                     {
+                        name: "user_id",
+                        type: "uuid"
+                    },
+                    {
                         name: "created_at",
                         type: "timestamp",
                         default: "now()",
@@ -66,6 +70,14 @@ export class CreateLocations1632068048937 implements MigrationInterface {
                         columnNames:["tenant_id"],
                         onDelete:"SET NULL",
                         onUpdate:"SET NULL"
+                    },
+                    {
+                        name: "FKUserLocation",
+                        referencedTableName: "users",
+                        referencedColumnNames: ["id"],
+                        columnNames: ["user_id"],
+                        onDelete: "SET NULL",
+                        onUpdate: "SET NULL"
                     }
                 ]
             })

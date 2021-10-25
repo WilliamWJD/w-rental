@@ -54,6 +54,20 @@ export class CreateTenants1631659785237 implements MigrationInterface {
                         name:"status",
                         type:"boolean",
                         default:true
+                    },
+                    {
+                        name: "user_id",
+                        type: "uuid"
+                    }
+                ],
+                foreignKeys: [
+                    {
+                        name: "FKUserTenant",
+                        referencedTableName: "users",
+                        referencedColumnNames: ["id"],
+                        columnNames: ["user_id"],
+                        onDelete: "SET NULL",
+                        onUpdate: "SET NULL"
                     }
                 ]
             })

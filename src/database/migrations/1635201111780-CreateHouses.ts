@@ -43,6 +43,20 @@ export class houses1632003552794 implements MigrationInterface {
                     {
                         name:'num',
                         type:'numeric'
+                    },
+                    {
+                        name: "user_id",
+                        type: "uuid"
+                    }
+                ],
+                foreignKeys: [
+                    {
+                        name: "FKUserHouse",
+                        referencedTableName: "users",
+                        referencedColumnNames: ["id"],
+                        columnNames: ["user_id"],
+                        onDelete: "SET NULL",
+                        onUpdate: "SET NULL"
                     }
                 ]
             })

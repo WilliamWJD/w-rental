@@ -37,6 +37,10 @@ export class receipts1632777960659 implements MigrationInterface {
                         type:"numeric"
                     },
                     {
+                        name: "user_id",
+                        type: "uuid"
+                    },
+                    {
                         name: "created_at",
                         type: "timestamp",
                         default: "now()",
@@ -56,6 +60,14 @@ export class receipts1632777960659 implements MigrationInterface {
                         onDelete:"SET NULL",
                         onUpdate:"SET NULL"
                     },
+                    {
+                        name: "FKUserReceipt",
+                        referencedTableName: "users",
+                        referencedColumnNames: ["id"],
+                        columnNames: ["user_id"],
+                        onDelete: "SET NULL",
+                        onUpdate: "SET NULL"
+                    }
                 ]
             })
         )
