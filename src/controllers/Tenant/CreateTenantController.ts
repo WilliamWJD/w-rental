@@ -7,7 +7,18 @@ class CreateTenantController{
     async handle(req:Request, res:Response):Promise<Response>{
         const { name, birth, rg, cpf, marital_status, profession, email, fone1, fone2 } = req.body;
 
-        const tenant = await createTenantService.execute({name, birth, rg, cpf, marital_status, profession, email, fone1, fone2});
+        const tenant = await createTenantService.execute({
+            name, 
+            birth, 
+            rg, 
+            cpf, 
+            marital_status, 
+            profession, 
+            email, 
+            fone1, 
+            fone2,
+            user_id:req.user.id
+        });
 
         return res.status(201).json(tenant);
     }

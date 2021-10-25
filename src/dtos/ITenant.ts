@@ -8,4 +8,5 @@ export default interface ITenant{
     email:string;
     fone1:string;
     fone2:string;
+    user_id:string;
 }

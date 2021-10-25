@@ -12,6 +12,7 @@ interface IRequest{
     email:string;
     fone1:string;
     fone2:string;
+    user_id:string
 }
 
 class CreateTenantService{
@@ -19,6 +20,7 @@ class CreateTenantService{
         const tenantRepository = getCustomRepository(TenantRepository);
 
         const tenant = await tenantRepository.createTenant(data)
+        
         return tenant;
     };
 }
