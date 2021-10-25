@@ -15,6 +15,26 @@ class UserRepository{
         await this.repository.save(user);
         return user;
     }
+
+    async findUsername(username: string):Promise<User | undefined>{
+        const user = await this.repository.findOne({
+            where:{
+                username
+            }
+        })
+
+        return user;
+    }
+
+    async findByMail(email:string):Promise<User | undefined>{
+        const user = await this.repository.findOne({
+            where:{
+                email
+            }
+        })
+
+        return user;
+    }
 }
 
 export { UserRepository }

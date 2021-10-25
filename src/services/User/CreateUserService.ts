@@ -15,6 +15,18 @@ class CreateUserService{
         const repository = getCustomRepository(UserRepository);
         const hashProvider = new HashProvider();
 
+        const checkUser = await repository.findUsername(username);
+
+        if(checkUser){
+            throw new Error('Já existe um usuario cadastrado com esse username')
+        }
+
+        const checkUserByMail = await repository.findByMail(email);
+
+        if(checkUserByMail){
+            throw new Error('Já existe um usuario cadastrado com esse email')
+        }
+
         const user = await repository.create({
             name,
             username,
