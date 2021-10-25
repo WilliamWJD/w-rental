@@ -16,6 +16,16 @@ class UserRepository{
         return user;
     }
 
+    async findById(user_id:string):Promise<User | undefined>{
+        const user = await this.repository.findOne({
+            where:{
+                id: user_id
+            }
+        })
+
+        return user;
+    }
+
     async findUsername(username: string):Promise<User | undefined>{
         const user = await this.repository.findOne({
             where:{
