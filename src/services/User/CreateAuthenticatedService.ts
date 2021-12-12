@@ -24,13 +24,13 @@ class CreateAuthenticatedService{
         const user = await userRepository.findUsername(username);
 
         if(!user){
-            throw new Error("Email ou senha inválidos!")
+            throw new Error("Usuário ou senha inválidos!")
         }
 
         const passwordMath = await hashProvider.compare(password, user.password);
 
         if(!passwordMath){
-            throw new Error("Email ou senha inválidos!")
+            throw new Error("Usuário ou senha inválidos!")
         }
         
         const token = sign({}, process.env.SECRET_KEY as string, {

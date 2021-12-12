@@ -15,6 +15,16 @@ class TenantRepository{
         await this.repository.save(tenant);
         return tenant;
     }
+
+    async getAll(user_id: string):Promise<Tenant[]>{
+        const tenants = await this.repository.find({
+            where:{
+                user_id
+            }
+        })
+
+        return tenants;
+    }
 }
 
 export { TenantRepository }
