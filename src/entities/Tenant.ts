@@ -43,6 +43,9 @@ class Tenant{
     @Column()
     user_id: string;
 
+    @Column()
+    status: boolean
+
     
     constructor(){
         if(!this.id){
