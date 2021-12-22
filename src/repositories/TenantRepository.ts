@@ -26,6 +26,15 @@ class TenantRepository{
         return tenants;
     }
 
+    async get(id:string, user_id:string):Promise<Tenant | undefined>{
+        const tenant = await this.repository.findOne({
+            id,
+            user_id
+        })
+
+        return tenant;
+    }
+
     async delete(id:string, user_id:string ):Promise<void>{
         await this.repository.delete({
             id,
