@@ -25,6 +25,14 @@ class TenantRepository{
 
         return tenants;
     }
+
+    async delete(id:string, user_id:string ):Promise<void>{
+        await this.repository.delete({
+            id,
+            user_id
+        })
+        return;
+    }
 }
 
 export { TenantRepository }
