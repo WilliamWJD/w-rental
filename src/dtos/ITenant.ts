@@ -1,4 +1,5 @@
 export default interface ITenant{
+    id?:string;
     name:string;
     birth:string;
     rg:string;

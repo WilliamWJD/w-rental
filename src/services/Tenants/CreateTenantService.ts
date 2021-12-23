@@ -21,14 +21,14 @@ class CreateTenantService{
 
         // verifica se existe um inquilino com cpf existente cadastrado para o usuário logado
         const checkTenantCpf = await tenantRepository.findByCpf(data.cpf, data.user_id)
-
+        
         if(checkTenantCpf){
             throw new Error("Tenant with cpf duplicated")
         }
 
         // verifica se existe um inquilino com rg existente cadastrado para o usuário logado
         const checkTenantRg = await tenantRepository.findByRg(data.rg, data.user_id);
-
+        
         if(checkTenantRg){
             throw new Error("Tenant with rg duplicated")
         }

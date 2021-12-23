@@ -58,6 +58,11 @@ class TenantRepository{
         });
         return tenant;
     }
+
+    async update(data: Tenant):Promise<Tenant>{
+        const tenant = await this.repository.save(data);
+        return tenant;
+    }
 }
 
 export { TenantRepository }
