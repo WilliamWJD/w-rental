@@ -42,6 +42,22 @@ class TenantRepository{
         })
         return;
     }
+
+    async findByCpf(cpf:string, user_id:string):Promise<Tenant | undefined>{
+        const tenant = await this.repository.findOne({
+            cpf,
+            user_id
+        });
+        return tenant;
+    }
+
+    async findByRg(rg:string, user_id:string):Promise<Tenant | undefined>{
+        const tenant = await this.repository.findOne({
+            rg,
+            user_id
+        });
+        return tenant;
+    }
 }
 
 export { TenantRepository }

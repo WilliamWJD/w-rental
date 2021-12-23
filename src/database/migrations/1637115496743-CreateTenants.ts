@@ -23,12 +23,10 @@ export class CreateTenants1631659785237 implements MigrationInterface {
                     {
                         name:"rg",
                         type:"varchar",
-                        isUnique:true,
                     },
                     {
                         name:"cpf",
                         type:"varchar",
-                        isUnique:true,
                     },
                     {
                         name:"marital_status",
