@@ -51,6 +51,11 @@ class HouseRepository{
 
         return;
     }
+
+    async update(data: House):Promise<House>{
+        const house = await this.repository.save(data);
+        return house;
+    }
 }
 
 export { HouseRepository }
