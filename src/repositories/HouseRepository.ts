@@ -23,6 +23,16 @@ class HouseRepository{
         });
         return house;
     }
+
+    async findAll(user_id:string):Promise<House[]>{
+        const houses = await this.repository.find({
+            where:{
+                user_id
+            }
+        })
+
+        return houses;
+    }
 }
 
 export { HouseRepository }
