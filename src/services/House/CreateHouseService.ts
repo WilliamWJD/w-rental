@@ -12,11 +12,19 @@ interface IRequest{
     district:string;
     city:string;
     num:string;
+    user_id:string;
 }
 
 class CreateHouseService{
     async execute(data:IRequest):Promise<House>{
         const houseRepository = getCustomRepository(HouseRepository);
+
+        // verifica se existe uma casa com o mesmo nome cadastrado no banco de dados
+        const searchHouseByName = await houseRepository.findByName(data.user_id, data.name);
+
+        if(searchHouseByName){
+            throw new Error("This house ia already exists")
+        }
 
         const house = await houseRepository.create(data);
 
