@@ -33,6 +33,24 @@ class HouseRepository{
 
         return houses;
     }
+
+    async findById(id: string, user_id:string):Promise<House | undefined>{
+        const house = await this.repository.findOne({
+            id,
+            user_id
+        })
+
+        return house;
+    }
+
+    async delete(id:string, user_id:string):Promise<void>{
+        await this.repository.delete({
+            id,
+            user_id
+        })
+
+        return;
+    }
 }
 
 export { HouseRepository }
