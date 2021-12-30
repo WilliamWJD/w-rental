@@ -1,15 +1,15 @@
 import { getCustomRepository } from 'typeorm';
-import { addMonths, parseISO } from 'date-fns';
+import { addMonths } from 'date-fns';
 
 import { Location } from '../../entities/Location';
 import { LocationRepository } from '../../repositories/LocationRepository';
 
 interface IRequest{
     date_start:Date;
-    date_end:Date;
     house_id:string;
     tenant_id:string;
     contract_time:number;
+    user_id:string;
 }
 
 class CreateLocationService{
@@ -17,19 +17,24 @@ class CreateLocationService{
         const locationRepository = getCustomRepository(LocationRepository);
         
         // verifica se existe um contrato de locação ativa para o imóvel desejado
-        const checkLocationActiveHouse = await locationRepository.checkLocationActiveHouse(data.house_id);
+        const checkLocationActiveHouse = await locationRepository.checkLocationActiveHouse(data.house_id, data.user_id);
 
         if(checkLocationActiveHouse){
             throw new Error('Esse imóvel já se encontra com uma locação ativa');
+        }
+
+        // não permite um tempo de contrato menor que 12 meses
+        if(data.contract_time < 12){
+            throw new Error('Não é permitido um tempo de contrato menor que 12 mêses!')
         }
 
         // Adiciona o tempo de contrato
         const dateStartContractFormat = Date.parse(String(data.date_start))
         const dateEndContract = addMonths(dateStartContractFormat, data.contract_time);
 
-        data.date_end = dateEndContract;
+        const date_end = dateEndContract;
 
-        const location = await locationRepository.create(data);
+        const location = await locationRepository.create({...data, date_end});
         
         return location;
     }

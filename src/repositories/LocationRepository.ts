@@ -16,10 +16,26 @@ class LocationRepository{
         return location;
     }
 
-    async checkLocationActiveHouse(house_id:string):Promise<Location | undefined>{
+    async listAll(user_id:string):Promise<Location[]>{
+        const locations = await this.repository.find({
+            relations:[
+                'user','tenant','house'
+            ],
+            where:{
+                user_id
+            }
+        })
+
+        return locations;
+    }
+
+    async checkLocationActiveHouse(house_id:string, user_id: string):Promise<Location | undefined>{
         const location = await this.repository.findOne({
-            house_id,
-            is_active:true
+            where:{
+                house_id,
+                user_id,
+                is_active:true
+            }
         })
 
         return location || undefined;

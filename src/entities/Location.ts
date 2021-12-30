@@ -2,6 +2,7 @@ import { Entity, PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn, Many
 import { v4 as uuidV4 } from 'uuid';
 import { House } from './House';
 import { Tenant } from './Tenant';
+import { User } from './User';
 
 @Entity("locations")
 class Location{
@@ -30,6 +31,15 @@ class Location{
 
     @Column()
     contract_time:number;
+
+    @ManyToOne(()=>User)
+    @JoinColumn({
+        name:"user_id"
+    })
+    user: User;
+
+    @Column()
+    user_id: string;
 
     @Column()
     is_active:boolean;

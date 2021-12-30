@@ -4,5 +4,6 @@ export default interface ILocation{
     house_id:string;
     tenant_id:string
     contract_time:number;
+    user_id: string;
     is_active?:boolean;
 }
